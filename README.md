@@ -25,9 +25,11 @@ with the directories of HMMER and/or PHOBIUS in your machine, e.g.
     phobius_dir = "/home/user/phobius/"
 
 You can also set the url for the Phobius web server (for use with the `-wp` version):
+
     phobius_url = "https://phobius.sbc.su.se/cgi-bin/predict.pl"
 
-Alternatively, use the `--hmmerdir`, `--phobiusdir`, `-wp` or `--webphobius` options, to override config.py
+Alternatively, use the `--hmmerdir`, `--phobiusdir`, `-wp` or `--webphobius` options, to override `config.py`.
+
 **Note:** If you don't have a Phobius license, you can still use RTK-PRED with the web-server version of Phobius through the `-wp` or `--webphobius` option.
 
 ----
@@ -71,10 +73,6 @@ The output files will consist of the following:
  7. summary.txt: The final RTK-PRED output, containing a summary of all predictions. **This is the file you most likely want to open and parse**.
  
  The final output (`summary.txt`) of RTK-PRED is in the following format: 
-
-#Your job ID is 1610962220.
-#You can use this ID to retrieve your results through the Retrieve Results page.
-#Note that results are deleted after 7 days.
 
     >> Query: sp|P00533|EGFR_HUMAN
     Classification: Receptor Tyrosine Kinase (RTK)
