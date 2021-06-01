@@ -137,8 +137,11 @@ Open either the command line (CMD) or PowerShell and type the following:
 where in `--hmmerdir` you define the location of your HMMER compiled files. Alternatively, you can edit `config.py` , enter the HMMER location there, and skip `--hmmerdir`.
 
 **Note 1:** To use RTK-PRED in native Windows, you need HMMER compiled for Windows. You can find a Windows version of HMMER 3.2 in [this repository](https://github.com/fbaltoumas/tools-for-windows/), or you can download the source code from hmmer.org and compile it yourself.  
+
 **Note 2:** Since Phobius is only offered as a pre-compiled package for the Linux kernel, there is no Windows version available.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
+
 **Note 3:** It is assumed that Python exists in your system path.  To add Python to the system path, either make sure you tick the `Add Python to Path` option during the installation of Python 3, or follow the procedure to add the Python3.exe executable to the system path (e.g., follow [this guide](https://answers.microsoft.com/en-us/windows/forum/windows_10-other_settings-winpc/adding-path-variable/97300613-20cb-4d85-8d0e-cc9d3549ba23)).
+
 **Note 4:** In `--hmmerdir` (or in `config.py`), make sure you use Windows-style paths ("\" instead of "/").
 
 #### Use in Windows with Cygwin:
@@ -150,8 +153,11 @@ Open Cygwin and type:
 where in `--hmmerdir` you define the location of your HMMER compiled files. Alternatively, you can edit `config.py` , enter the HMMER location there, and skip `--hmmerdir`.
 
 **Note 1:** To use RTK-PRED in Cygwin, you need HMMER compiled for Windows. You can find a Windows version of HMMER 3.2 in [this repository](https://github.com/fbaltoumas/tools-for-windows/), or you can download the source code from hmmer.org and compile it yourself.  
+
 **Note 2:** There is no Cygwin version available for Phobius.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
+
 **Note 3:** By default, Cygwin does not install Python. Make sure that you have Python 3 installed.
+
 **Note 4:** In `--hmmerdir` (or in `config.py`), make sure you use Unix-style paths (`/cygdrive/c/...` etc for Widnows paths).
 
 #### Use in Windows with Windows Subsystem for Linux (WSL):
