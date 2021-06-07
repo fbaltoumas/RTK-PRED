@@ -1,6 +1,3 @@
-
-
-
 ## RTK-PRED: automated detection and annotation of Receptor Tyrosine Kinases (RTKs) with profile Hidden Markov Models (pHMMs)
 
 Online version: http://bioinformatics.biol.uoa.gr/RTK-PRED/
@@ -14,6 +11,26 @@ Online version: http://bioinformatics.biol.uoa.gr/RTK-PRED/
 ----
 
 ### First-time setup
+
+#### 1. Download RTK-PRED
+Download a zipped archive of the repository using the GitHub download button, or clone it with git:
+
+    git clone https://github.com/fbaltoumas/RTK-PRED.git
+
+#### 2. Install HMMER 3.1 or newer
+Download and install [HMMER](http://hmmer.org/documentation.html).  
+
+**Note 1**: HMMER versions up to (and including) 3.0 DO NOT WORK, because they used different command line options.  
+
+**Note 2**: Windows users (that do not use WSL) need to compile HMMER from source.  However, you can find a pre-compiled Windows version of HMMER 3.2 [here](https://github.com/fbaltoumas/tools-for-windows/). 
+
+
+#### 3. (optional) Install Phobius
+Obtain a license, download and install Phobius from [here](https://phobius.sbc.su.se/data.html).  This step is optional, as RTK-PRED can also work with the Phobius web server as well, by using the `-wp` or `--webphobius` options.  However, running RTK-PRED with a local installation of Phobius is expected to be faster, especially for large datasets.
+
+**Note**: Phobius is not currently available for native Windows.  Windows users can either use Windows Subsystem for Linux (Phobius will work with that) or, alternatively, use RTK-PRED with the web server option. 
+ 
+#### 4. Configure RTK-PRED
 Open `config.py` with a text editor and replace the following two paths:
 
     hmmer_dir = "/usr/bin/"
@@ -27,6 +44,8 @@ with the directories of HMMER and/or PHOBIUS in your machine, e.g.
 You can also set the url for the Phobius web server (for use with the `-wp` version):
 
     phobius_url = "https://phobius.sbc.su.se/cgi-bin/predict.pl"
+
+This can be useful, should the original url of the server change for any reason.
 
 Alternatively, use the `--hmmerdir`, `--phobiusdir`, `-wp` or `--webphobius` options, to override `config.py`.
 
