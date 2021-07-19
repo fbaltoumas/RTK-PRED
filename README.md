@@ -20,9 +20,9 @@ Download a zipped archive of the repository using the GitHub download button, or
 #### 2. Install HMMER 3.1 or newer
 Download and install [HMMER](http://hmmer.org/documentation.html).  
 
-**Note 1**: HMMER versions up to (and including) 3.0 DO NOT WORK, because they used different command line options.  
+**Note 1**: Older HMMER versions up to (and including) 3.0 DO NOT WORK, because they used different command line options.  
 
-**Note 2**: Windows users (that do not use WSL) need to compile HMMER from source.  However, you can find a pre-compiled Windows version of HMMER 3.2 [here](https://github.com/fbaltoumas/tools-for-windows/). 
+**Note 2**: Windows users that do not use WSL need to compile HMMER from source.  However, you can find a pre-compiled Windows version of HMMER 3.2 [here](https://github.com/fbaltoumas/tools-for-windows/). This can be used with the Windows command line, Powershell or with CygWin.
 
 
 #### 3. (optional) Install Phobius
