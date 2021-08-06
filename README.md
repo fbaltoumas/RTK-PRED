@@ -3,7 +3,7 @@
 Online version: http://bioinformatics.biol.uoa.gr/RTK-PRED/
 
 #### Requirements
-* **Operating System:** Any (tested in Linux, native Windows, Windows with WSL and Windows with Cygwin). MacOS, BSD and other Unix systems will probably work too, in a manner identical (or at least very similar) to Linux.
+* **Operating System:** Linux, Microsoft Windows (native, with Windows Subsystem for Linux (WSL) or Cygwin), Apple Mac OS. BSD and other Unix-based systems will probably work too, in a manner identical (or at least very similar) to Linux and Mac OS.
 * **Python 3** version **3.5** or higher
 * **HMMER** version **3.1b1** or higher
 * (*optional*) **Phobius** (alternatively, you can use the web version of Phobius using `-wp` or `--webphobius`, see below)
@@ -28,7 +28,7 @@ Download and install [HMMER](http://hmmer.org/documentation.html).
 #### 3. (optional) Install Phobius
 Obtain a license, download and install Phobius from [here](https://phobius.sbc.su.se/data.html).  This step is optional, as RTK-PRED can also work with the Phobius web server as well, by using the `-wp` or `--webphobius` options.  However, running RTK-PRED with a local installation of Phobius is expected to be faster, especially for large datasets.
 
-**Note**: Phobius is not currently available for native Windows.  Windows users can either use Windows Subsystem for Linux (Phobius will work with that) or, alternatively, use RTK-PRED with the web server option. 
+**Note**: Phobius is not currently available for native Windows or Mac OS.  Windows users can either use Windows Subsystem for Linux (Phobius will work with that) or, alternatively, use RTK-PRED with the web server option. Mac OS users will have to use RTK-PRED with the web server option.
  
 #### 4. Configure RTK-PRED
 Open `config.py` with a text editor and replace the following two paths:
@@ -68,28 +68,28 @@ USE:
       -h, --help            	show this help message and exit
       --mkdir               	if set, it automatically creates the output directory specified by '-o'.
       -wp, --webphobius     	use the web-server version of Phobius instead of a
-	                            locally installed one (useful for Windows and MacOS
-	                            machines, for which the 'decodeanhmm' binary used by
-	                            Phobius is not available, as well as those users
-	                            without a Phobius license), requires internet
-	                            connection
+	                        locally installed one (useful for Windows and MacOS
+	                        machines, for which the 'decodeanhmm' binary used by
+	                        Phobius is not available, as well as those users
+	                        without a Phobius license), requires internet
+	                        connection
       --hmmerdir HMMERDIR   	set the location of the HMMER binaries directory
-                            (overrides config.py)
+                                (overrides config.py)
       --phobiusdir PHOBIUSDIR	set the location of the Phobius binaries directory
-                            (overrides config.py), not applicable when
-                            -wp/--webphobius is set. Also, not applicable in
-                            Windows.
-      -v, --version         display version and exit
+                                (overrides config.py), not applicable when
+                                -wp/--webphobius is set. Also, not applicable in
+                                Windows.
+      -v, --version             display version and exit
 
 The output files will consist of the following:
 
- 1. PTKhmm.res: HMMER results for the PTK pHMM, as run on the input.
- 2. PTKs.fasta: FASTA file with all identified PTKs (single-domain PTKs, multi-domain PTKs and RTKs)
- 3. singlePTKs.fasta: a subset of PTKs.fasta. FASTA file with PTKs containing only one PTK domain (single-domain PTKs and RTKs)
- 4. phobius.txt: results from the Phobius transmembrane predictor, as run on singlePTKs.fasta
- 5. RTKs.fasta: FASTA file containing all predicted RTKs.
- 6. EC.res and JM.res: HMMER results for the extracellular domain (EC) and juxtamembrane region pHMMs (JM), as run on RTKs.fasta
- 7. summary.txt: The final RTK-PRED output, containing a summary of all predictions. **This is the file you most likely want to open and parse**.
+ 1. summary.txt: The final RTK-PRED output, containing a summary of all predictions. **This is the file you most likely want to open and parse**.
+ 2. PTKhmm.res: HMMER results for the PTK pHMM, as run on the input.
+ 3. PTKs.fasta: FASTA file with all identified PTKs (single-domain PTKs, multi-domain PTKs and RTKs)
+ 4. singlePTKs.fasta: a subset of PTKs.fasta. FASTA file with PTKs containing only one PTK domain (single-domain PTKs and RTKs)
+ 5. phobius.txt: results from the Phobius transmembrane predictor, as run on singlePTKs.fasta
+ 6. RTKs.fasta: FASTA file containing all predicted RTKs.
+ 7. EC.res and JM.res: HMMER results for the extracellular domain (EC) and juxtamembrane region pHMMs (JM), as run on RTKs.fasta
  
  The final output (`summary.txt`) of RTK-PRED is in the following format: 
 
@@ -179,3 +179,11 @@ where in `--hmmerdir` you define the location of your HMMER compiled files. Alte
 
 #### Use in Windows with Windows Subsystem for Linux (WSL):
 The WSL overlay essentially builds a Linux compatibility layer, with the native Linux kernel.  This means that binaries compiled for Linux run in WSL natively.  Therefore, all of the runs described in the **Use in Linux** subsections above also work with WSL.
+
+#### Use in Mac OS:
+Perform a run calling the web-server edition of Phobius (use of the `-wp` or `--webphobius` option):
+
+    chmod +x rtk-pred.py
+    ./rtk-pred.py -i test.fasta -o output --mkdir --hmmerdir /home/user/hmmer/bin/ -wp
+
+**Note:** There is no Cygwin version available for Phobius.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
