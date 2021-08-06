@@ -377,6 +377,9 @@ types ={
 	"WIF"                           : "Type 15 (RYK subfamily)",
 	"F5_F8_type_C"                  : "Type 16 (DDR subfamily)",
 	"fn3"                           : "Type 17 (ROS subfamily)",
+	"fn3ig"                         : "Type 11 (TAM subfamily)",
+	"fn3Ig_2"                       : "Type 11 (TAM subfamily)",
+	"fn3Ig_3"                       : "Type 11 (TAM subfamily)",
 	"MAM"                           : "Type 19 (ALK subfamily)",
 	"Ldl_recept_aMAM"               : "Type 19 (ALK subfamily)",
 	"Ephrin_lbd"                 : "Type 13 (Eph subfamily)"
@@ -629,7 +632,14 @@ for fasta in mfasta:
         if rtk_dict[id].family != "":
             summary.write("RTK subfamily: %s\n" %rtk_dict[id].family)
         else:
-            summary.write("RTK subfamily: Uncategorized\n")
+            if rtk_dict[id].signal !=None:
+                ec_reg=rtk_dict[id].tm[0] -rtk_dict[id].signal[1]+1
+            else:
+                ec_reg=rtk_dict[id].tm[0]
+            if ec_reg <= 50:
+                summary.write("RTK subfamily: Type 18 (LMR) or Type 20 (STYK1) subfamily\n")
+            else:
+                summary.write("RTK subfamily: Uncategorized\n")
     elif rtk==False and nrtk==True:
         summary.write("Classification: Non-Receptor Tyrosine Kinase (nRTK)\n")
         for ptk in ptk_results:
