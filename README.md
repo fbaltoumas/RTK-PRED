@@ -178,7 +178,7 @@ where in `--hmmerdir` you define the location of your HMMER compiled files. Alte
 **Note 4:** In `--hmmerdir` (or in `config.py`), make sure you use Unix-style paths (`/cygdrive/c/...` etc for Widnows paths).
 
 #### Use in Windows with Windows Subsystem for Linux (WSL):
-The WSL overlay essentially builds a Linux compatibility layer, with the native Linux kernel.  This means that binaries compiled for Linux run in WSL natively.  Therefore, all of the runs described in the **Use in Linux** subsections above also work with WSL.
+The WSL overlay essentially builds a Linux compatibility layer, with the native Linux kernel.  This means that binaries compiled for Linux run in WSL natively.  Therefore, all of the runs described in the **Use in Linux** subsections above also work with WSL in the same manner as an actual Linux OS. Most importantly, the local version of Phobius runs on WSL installations with no problems; therefore, you can use RTK-PRED without needing the web server.
 
 #### Use in Mac OS:
 Perform a run calling the web-server edition of Phobius (use of the `-wp` or `--webphobius` option):
@@ -186,4 +186,4 @@ Perform a run calling the web-server edition of Phobius (use of the `-wp` or `--
     chmod +x rtk-pred.py
     ./rtk-pred.py -i test.fasta -o output --mkdir --hmmerdir /home/user/hmmer/bin/ -wp
 
-**Note:** There is no Cygwin version available for Phobius.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
+**Note:** There is no Mac OS version available for Phobius.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
