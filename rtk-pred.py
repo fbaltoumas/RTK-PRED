@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from urllib import request, parse
-from sys import argv
+from sys import argv,stderr
 import subprocess
 import argparse
 import platform
@@ -410,9 +410,10 @@ def classify_RTKs(EC="EC.res", JM="JM.res", rtk_results=None):
                     domains.append(h.domain)
         d=''.join(sorted(domains))
         if d in types.keys():
+            family = "Uncategorized"
             family=types[d]
-        else:
-            for j in jm:
+        #else:
+        for j in jm:
                 if j.title==p:
                     if d.lower() =="ig":
                         family=types_jm[j.domain]
@@ -421,7 +422,8 @@ def classify_RTKs(EC="EC.res", JM="JM.res", rtk_results=None):
                             family=types_jm[j.domain]
                         else:
                             family="Type 11 (TAM receptor subfamily)"
-        #print("%s %s" %(p, d))
+                    else:
+                        continue
         for rtk in rtk_results:
             if rtk.id==p:
                 rtk.family=family
@@ -430,7 +432,6 @@ def classify_RTKs(EC="EC.res", JM="JM.res", rtk_results=None):
                         dct={"domain":h.domain, "id":pfam[h.domain], "score":h.score, "start":h.start, "end":h.end}
                         rtk.domains.append(dct)
     return rtk_results
-    #print(family)
 ##### Setting up variable values according to CLI input #####
 
 web=False
