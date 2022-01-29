@@ -631,7 +631,10 @@ for fasta in mfasta:
         summary.write("TRANSMEM:\t\t\t\tFrom:%d\tTo:%d\n"%(rtk_dict[id].tm[0], rtk_dict[id].tm[1]))
         summary.write("Kinase Domain:\t\t\t\tFrom:%d\tTo:%d\t\tScore: %.1f\n" %(ptk_dict[id].start, ptk_dict[id].end, ptk_dict[id].score))
         if rtk_dict[id].family != "":
-            summary.write("RTK subfamily: %s\n" %rtk_dict[id].family)
+            if rtk_dict[id].family=="None":
+                summary.write("RTK subfamily: Uncategorized\n")
+            else:
+                summary.write("RTK subfamily: %s\n" %rtk_dict[id].family)
         else:
             if rtk_dict[id].signal !=None:
                 ec_reg=rtk_dict[id].tm[0] -rtk_dict[id].signal[1]+1
