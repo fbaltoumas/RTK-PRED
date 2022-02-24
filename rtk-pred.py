@@ -364,14 +364,14 @@ pfam ={
 
 }
 types ={
-	"Furin-likeRecep_L_domain"      : "Type 1 (EGF receptor subfamily)",
-	"Furin-likeRecep_L_domainfn3"   : "Type 2 (Insulin receptor subfamily)",
+	"Furin-likeRecep_L_domain"      : "Type 1 (EGF subfamily)",
+	"Furin-likeRecep_L_domainfn3"   : "Type 2 (Insulin subfamily)",
 	"LRR_8ig"                       : "Type 7 (Trk subfamily)",
 	"LRR_8"                         : "Type 7 (Trk subfamily)",
 	"FzKringleig"                   : "Type 8 (ROR subfamily)",
 	"FzKringle"                     : "Type 8 (ROR subfamily)",
 	"Fzig"                          : "Type 9 (MuSK subfamily)",
-	"SemaTIG"                       : "Type 10 (HGF receptor subfamily)",
+	"SemaTIG"                       : "Type 10 (HGF subfamily)",
 	"Ephrin_lbdfn3"                 : "Type 13 (Eph subfamily)",
 	"Cadherin"                      : "Type 14 (RET subfamily)",
 	"WIF"                           : "Type 15 (RYK subfamily)",
@@ -386,11 +386,11 @@ types ={
 }
 
 types_jm = {
-"JM_12" : "Type 12 (TIE receptor subfamily)",
-"JM_3" : "Type 3 (PDGF receptor subfamily)",
-"JM_4" : "Type 4 (VEGF receptor subfamily)",
-"JM_5" : "Type 5 (FGF receptor subfamily)",
-"JM_6" : "Type 6 (CCK receptor subfamily)"
+"JM_12" : "Type 12 (TIE subfamily)",
+"JM_3" : "Type 3 (PDGF subfamily)",
+"JM_4" : "Type 4 (VEGF subfamily)",
+"JM_5" : "Type 5 (FGF subfamily)",
+"JM_6" : "Type 6 (CCK subfamily)"
 }
 
 
@@ -421,7 +421,7 @@ def classify_RTKs(EC="EC.res", JM="JM.res", rtk_results=None):
                         if j.domain=="JM_12":
                             family=types_jm[j.domain]
                         else:
-                            family="Type 11 (TAM receptor subfamily)"
+                            family="Type 11 (TAM subfamily)"
                     else:
                         continue
         for rtk in rtk_results:
@@ -631,7 +631,7 @@ for fasta in mfasta:
         summary.write("TRANSMEM:\t\t\t\tFrom:%d\tTo:%d\n"%(rtk_dict[id].tm[0], rtk_dict[id].tm[1]))
         summary.write("Kinase Domain:\t\t\t\tFrom:%d\tTo:%d\t\tScore: %.1f\n" %(ptk_dict[id].start, ptk_dict[id].end, ptk_dict[id].score))
         if rtk_dict[id].family != "":
-            if rtk_dict[id].family=="None":
+            if rtk_dict[id].family==None:
                 summary.write("RTK subfamily: Uncategorized\n")
             else:
                 summary.write("RTK subfamily: %s\n" %rtk_dict[id].family)
