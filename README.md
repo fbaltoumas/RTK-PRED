@@ -2,6 +2,12 @@
 
 Online version: http://bioinformatics.biol.uoa.gr/RTK-PRED/
 
+Developers:
+- Dr. Fotis Baltoumas (baltoumas@fleming.gr)
+- Georgios Filis, Msc (georgefil28@gmail.com)
+- Georgios Spanogiannis, Bsc (georgespano17@gmail.com)
+
+
 #### Requirements
 * **Operating System:** Linux, Microsoft Windows (native, with Windows Subsystem for Linux (WSL) or Cygwin), Apple Mac OS. BSD and other Unix-based systems will probably work too, in a manner identical (or at least very similar) to Linux and Mac OS.
 * **Python 3** version **3.5** or higher
@@ -18,9 +24,9 @@ Download a zipped archive of the repository using the GitHub download button, or
     git clone https://github.com/fbaltoumas/RTK-PRED.git
 
 #### 2. Install HMMER 3.1 or newer
-Download and install [HMMER](http://hmmer.org/documentation.html).  
+Download and install [HMMER](http://hmmer.org/documentation.html).
 
-**Note 1**: Older HMMER versions up to (and including) 3.0 DO NOT WORK, because they used different command line options.  
+**Note 1**: Older HMMER versions up to (and including) 3.0 DO NOT WORK, because they used different command line options.
 
 **Note 2**: Windows users that do not use WSL need to compile HMMER from source.  However, you can find a pre-compiled Windows version of HMMER 3.2 [here](https://github.com/fbaltoumas/tools-for-windows/). This can be used with the Windows command line, Powershell or with CygWin.
 
@@ -29,7 +35,7 @@ Download and install [HMMER](http://hmmer.org/documentation.html).
 Obtain a license, download and install Phobius from [here](https://phobius.sbc.su.se/data.html).  This step is optional, as RTK-PRED can also work with the Phobius web server as well, by using the `-wp` or `--webphobius` options.  However, running RTK-PRED with a local installation of Phobius is expected to be faster, especially for large datasets.
 
 **Note**: Phobius is not currently available for native Windows or Mac OS.  Windows users can either use Windows Subsystem for Linux (Phobius will work with that) or, alternatively, use RTK-PRED with the web server option. Mac OS users will have to use RTK-PRED with the web server option.
- 
+
 #### 4. Configure RTK-PRED
 Open `config.py` with a text editor and replace the following two paths:
 
@@ -54,7 +60,7 @@ Alternatively, use the `--hmmerdir`, `--phobiusdir`, `-wp` or `--webphobius` opt
 ----
 
 ### How to run:
-USE: 
+USE:
 
     rtk-pred.py [-h] -i INPUT -o OUTPUT [--mkdir] [-wp] [--hmmerdir HMMERDIR] [--phobiusdir PHOBIUSDIR] [-v]
 
@@ -90,8 +96,8 @@ The output files will consist of the following:
  5. phobius.txt: results from the Phobius transmembrane predictor, as run on singlePTKs.fasta
  6. RTKs.fasta: FASTA file containing all predicted RTKs.
  7. EC.res and JM.res: HMMER results for the extracellular domain (EC) and juxtamembrane region pHMMs (JM), as run on RTKs.fasta
- 
- The final output (`summary.txt`) of RTK-PRED is in the following format: 
+
+ The final output (`summary.txt`) of RTK-PRED is in the following format:
 
     >> Query: sp|P00533|EGFR_HUMAN
     Classification: Receptor Tyrosine Kinase (RTK)
@@ -121,7 +127,7 @@ In each line you can see:
   5. Extracellular Domain Predictions (for RTKs only - provided there are positive hits)
   6. Classification between the 18 mammalian RTKs' subfamilies (for RTKs only - provided there are positive hits)
 
-Each result starts with double greater-than sign `>>` and ends with double backslash sign `//`. 
+Each result starts with double greater-than sign `>>` and ends with double backslash sign `//`.
 
 ----
 
@@ -138,14 +144,14 @@ Perform a run using by manually defining the HMMER and Phobius paths:
 
     chmod +x rtk-pred.py
     ./rtk-pred.py -i test.fasta -o output --mkdir --hmmerdir /home/user/hmmer/bin/ --phobiusdir /home/user/phobius/
-    
+
 
 #### Use in Linux with the Phobius web server:
 Perform a run calling the web-server edition of Phobius (use of the `-wp` or `--webphobius` option):
 
     chmod +x rtk-pred.py
     ./rtk-pred.py -i test.fasta -o output --mkdir --hmmerdir /home/user/hmmer/bin/ -wp
-    
+
 #### Use in native Windows:
 Open either the command line (CMD) or PowerShell and type the following:
 
@@ -153,7 +159,7 @@ Open either the command line (CMD) or PowerShell and type the following:
 
 where in `--hmmerdir` you define the location of your HMMER compiled files. Alternatively, you can edit `config.py` , enter the HMMER location there, and skip `--hmmerdir`.
 
-**Note 1:** To use RTK-PRED in native Windows, you need HMMER compiled for Windows. You can find a Windows version of HMMER 3.2 in [this repository](https://github.com/fbaltoumas/tools-for-windows/), or you can download the source code from hmmer.org and compile it yourself.  
+**Note 1:** To use RTK-PRED in native Windows, you need HMMER compiled for Windows. You can find a Windows version of HMMER 3.2 in [this repository](https://github.com/fbaltoumas/tools-for-windows/), or you can download the source code from hmmer.org and compile it yourself.
 
 **Note 2:** Since Phobius is only offered as a pre-compiled package for the Linux kernel, there is no Windows version available.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
 
@@ -169,7 +175,7 @@ Open Cygwin and type:
 
 where in `--hmmerdir` you define the location of your HMMER compiled files. Alternatively, you can edit `config.py` , enter the HMMER location there, and skip `--hmmerdir`.
 
-**Note 1:** To use RTK-PRED in Cygwin, you need HMMER compiled for Windows. You can find a Windows version of HMMER 3.2 in [this repository](https://github.com/fbaltoumas/tools-for-windows/), or you can download the source code from hmmer.org and compile it yourself.  
+**Note 1:** To use RTK-PRED in Cygwin, you need HMMER compiled for Windows. You can find a Windows version of HMMER 3.2 in [this repository](https://github.com/fbaltoumas/tools-for-windows/), or you can download the source code from hmmer.org and compile it yourself.
 
 **Note 2:** There is no Cygwin version available for Phobius.  Therefore, you need to use the Phobius web server, with the option `-wp` or `--webphobius`.
 
