@@ -3,6 +3,7 @@
 Online version: http://bioinformatics.biol.uoa.gr/RTK-PRED/
 
 If you use RTK-PRED in your research please cite the following publication:
+
 Filis, G., Baltoumas, F.A., Spanogiannis, G., Litou, Z.I., Iconomidou, V.A. (2023) **Proteome-Wide Detection and Annotation of Receptor Tyrosine Kinases (RTKs): RTK-PRED and the TyReK Database**. *Biomolecules*, 2023, 13(2), 270; [https://doi.org/10.3390/biom13020270](https://doi.org/10.3390/biom13020270)
 
 Developers:
